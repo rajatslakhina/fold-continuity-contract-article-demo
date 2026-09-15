@@ -21,7 +21,7 @@ This package makes that loss **testable**:
 - `CheckoutFlow` — a mid-checkout state and two adapters: `naive` (rebuild on horizontal flip) and
   `contracted` (posture only touches derived fields). Same layout output; only one keeps the work.
 
-Article: (added after publish)
+Article: [A Fold Is Not a Resize. I Fuzzed a Checkout Across 3,200 iPhone Duo Posture Changes, and It Lost the Draft by Step 6 Every Time.](https://medium.com/@er.rajatlakhina/a-fold-is-not-a-resize-i-fuzzed-a-checkout-across-3-200-iphone-duo-posture-changes-90edbdf94c4c)
 
 ## What the fuzzer finds
 
@@ -66,8 +66,8 @@ func testNaiveCheckoutLosesWorkOnFirstSizeClassChange() {
 }
 
 func testNaiveCheckoutPassesWhenPosturesNeverFlipSizeClass() {
-    let phoneOnly = PostureFuzzer(postures: [.closedPortrait])
-    XCTAssertTrue(phoneOnly.run(CheckoutAdapters.naive, seed: 5, steps: 32).passed)
+    let phoneOnly = PostureFuzzer(postures: [.closedPortrait, .closedLandscape])
+    XCTAssertTrue(phoneOnly.run(CheckoutAdapters.naive, seed: 5, steps: 64).passed)
 }
 ```
 
