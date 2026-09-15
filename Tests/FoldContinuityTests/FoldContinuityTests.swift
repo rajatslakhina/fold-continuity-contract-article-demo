@@ -150,8 +150,8 @@ final class PostureFuzzerTests: XCTestCase {
     func testNaiveCheckoutPassesWhenPosturesNeverFlipSizeClass() {
         // The bug is invisible on a device that never changes size class —
         // which is every iPhone shipped before this one.
-        let phoneOnly = PostureFuzzer(postures: [.closedPortrait])
-        let report = phoneOnly.run(CheckoutAdapters.naive, seed: 5, steps: 32, from: .closedPortrait)
+        let phoneOnly = PostureFuzzer(postures: [.closedPortrait, .closedLandscape])
+        let report = phoneOnly.run(CheckoutAdapters.naive, seed: 5, steps: 64, from: .closedPortrait)
         XCTAssertTrue(report.passed)
     }
 }
